@@ -1,0 +1,151 @@
+/* PostDetail.css */
+
+/* Container */
+.post-container {
+    padding: 2rem 0;
+  }
+  
+  .post-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Loading Spinner */
+  .post-loading {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+  }
+  
+  .post-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 4px solid #bfdbfe;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Error Message */
+  .post-error {
+    background-color: #fef2f2;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .post-error-title {
+    font-size: 1.25rem;
+    color: #b91c1c;
+    margin-bottom: 1rem;
+  }
+  
+  .post-error-link {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  
+  .post-error-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Post Header */
+  .post-header {
+    margin-bottom: 2rem;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111827;
+  }
+  
+  .post-meta {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .post-tag {
+    display: inline-block;
+    background-color: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-right: 0.5rem;
+    color: #374151;
+    font-size: 0.875rem;
+  }
+  
+  /* Admin Actions */
+  .post-admin-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .btn-edit {
+    background-color: #2563eb;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+  }
+  
+  .btn-edit:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .btn-delete {
+    background-color: #dc2626;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-delete:hover {
+    background-color: #b91c1c;
+  }
+  
+  /* Featured Image */
+  .post-featured-image img {
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    margin-bottom: 2rem;
+  }
+  
+  /* Post Content */
+  .post-content {
+    line-height: 1.8;
+  }
+  
+  .post-content a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  
+  .post-content a:hover {
+    text-decoration: underline;
+  }
+  
+  .post-content code {
+    background-color: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    color: #374151;
+  }
+  
+  .post-content pre {
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+  

@@ -1,0 +1,11 @@
+# backend/requirements.txt
+fastapi==0.104.0
+uvicorn[standard]==0.23.2
+motor
+pydantic==2.4.2
+pydantic[email]==2.4.2
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+python-slugify==8.0.1
+python-dotenv==1.0.0

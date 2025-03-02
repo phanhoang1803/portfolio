@@ -1,0 +1,29 @@
+/* Footer.css */
+.footer {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-text {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+.footer-text:hover {
+  color: #ffffff;
+  transition: color 0.3s ease-in-out;
+}

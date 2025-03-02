@@ -1,0 +1,64 @@
+# docker-compose.yml - DEVELOPMENT VERSION
+version: '3.8'
+
+services:
+  # MongoDB database
+  mongodb:
+    image: mongo:6
+    container_name: academic-portfolio-mongodb
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  # Backend API - Development Mode
+  backend:
+    build: ./backend
+    container_name: academic-portfolio-backend
+    volumes:
+      - ./backend:/app
+      - media_data:/app/media
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017
+      - MONGODB_DB_NAME=academic_portfolio
+      - SECRET_KEY=dev_secret_key_for_testing
+      - MEDIA_ROOT=/app/media
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=adminpassword
+    ports:
+      - "8000:8000"
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  # Frontend - Development Mode (with Vite dev server)
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: academic-portfolio-frontend-dev
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+    command: npm run dev -- --host
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  media_data:

@@ -1,0 +1,19 @@
+# frontend/Dockerfile.dev
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy only package.json (no package-lock.json yet)
+COPY package.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Expose port for development server
+EXPOSE 3000
+
+# Start development server
+CMD ["npm", "run", "dev", "--", "--host"]
