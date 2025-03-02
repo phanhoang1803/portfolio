@@ -1,0 +1,39 @@
+services:
+  # Backend API Service
+  - type: web
+    name: academic-portfolio-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile.render
+    envVars:
+      - key: MONGODB_URI
+        fromDatabase:
+          name: academic-portfolio-db
+          property: connectionString
+      - key: MONGODB_DB_NAME
+        value: academic_portfolio
+      - key: SECRET_KEY
+        generateValue: true
+      - key: MEDIA_ROOT
+        value: /app/media
+      - key: ADMIN_EMAIL
+        value: admin@example.com
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+
+  # Frontend Service
+  - type: web
+    name: academic-portfolio-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile.render
+    buildCommand: docker build -f Dockerfile.render -t academic-portfolio-frontend .
+    envVars:
+      - key: VITE_API_URL
+        value: https://academic-portfolio-backend.onrender.com/api
+
+databases:
+  # MongoDB Database
+  - name: academic-portfolio-db
+    databaseName: academic_portfolio
+    plan: free
